@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Store Bill</title>
+    <style>
+        /* CSS for styling */
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        #container {
+            width: 80%;
+            margin: 0 auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        #total {
+            font-weight: bold;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h1>Online Store Bill</h1>
+        <table>
+            <tr>
+                <th>Item</th>
+                <th>Price (per unit)</th>
+                <th>Quantity</th>
+                <th>Total</th>
+            </tr>
+            <tr>
+                <td>Item 1</td>
+                <td>$10.00</td>
+                <td><input type="number" id="quantity1" value="0"></td>
+                <td id="total1">$0.00</td>
+            </tr>
+            <tr>
+                <td>Item 2</td>
+                <td>$15.00</td>
+                <td><input type="number" id="quantity2" value="0"></td>
+                <td id="total2">$0.00</td>
+            </tr>
+            <!-- Add more rows for items as needed -->
+        </table>
+        <button onclick="calculateTotal()">Calculate Total</button>
+        <p id="total">Total: $0.00</p>
+        <button onclick="printBill()">Print Bill</button>
+    </div>
+
+    <script>
+        // JavaScript for dynamic calculations
+        function calculateTotal() {
+            const quantity1 = parseInt(document.getElementById("quantity1").value);
+            const quantity2 = parseInt(document.getElementById("quantity2").value);
+            // Add more quantities as needed
+
+            const price1 = 10.00;
+            const price2 = 15.00;
+            // Add more prices as needed
+
+            const total1 = quantity1 * price1;
+            const total2 = quantity2 * price2;
+            // Calculate totals for other items
+
+            const total = total1 + total2; // Sum all totals
+
+            document.getElementById("total1").textContent = `$${total1.toFixed(2)}`;
+            document.getElementById("total2").textContent = `$${total2.toFixed(2)}`;
+            // Update totals for other items
+
+            document.getElementById("total").textContent = `Total: $${total.toFixed(2)}`;
+        }
+
+        function printBill() {
+            window.print();
+        }
+    </script>
+</body>
+</html>
